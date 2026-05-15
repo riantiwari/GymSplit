@@ -11,23 +11,23 @@ Arushi Gupta (agupta38)
 GymSplit Generator creates personalized workout plans based on a user's goals, schedule, experience level, and available equipment. Users can save generated plans and track completed workouts.
 
 ## YouTube Video Link
-[Add link here after recording demo]
+https://youtu.be/FTiWS7MOLvk
 
 ## APIs
-- [API Ninjas Exercises API](https://api-ninjas.com/api/exercises) — fetches exercises by muscle group and equipment
+- [API Ninjas Exercises API](https://api-ninjas.com/api/exercises)
 
 ## Contact Email
 agupta38@terpmail.umd.edu
 
 ## Deployed App Link
-[(https://gymsplit.onrender.com)]
+https://gymsplit.onrender.com
 
 ## AI Use
 1. Claude (claude.ai)
 
 ---
 
-## Running Locally
+## Instructions to run
 
 1. Clone the repo and navigate to the project folder
 2. Copy `.env.example` to `.env` and fill in your values:
@@ -46,7 +46,3 @@ agupta38@terpmail.umd.edu
    ```
 5. Open [http://localhost:3000](http://localhost:3000)
 
-## Notes
-- Get a free API Ninjas key at [api-ninjas.com](https://api-ninjas.com)
-- The app includes fallback exercises if the API is unavailable — it will always generate a full plan
-- Create a separate MongoDB user for this project to avoid conflicts with previous assignments
