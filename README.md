@@ -20,7 +20,7 @@ GymSplit Generator creates personalized workout plans based on a user's goals, s
 agupta38@terpmail.umd.edu
 
 ## Deployed App Link
-[Add Render deployment link here]
+[(https://gymsplit.onrender.com)]
 
 ## AI Use
 1. Claude (claude.ai)
