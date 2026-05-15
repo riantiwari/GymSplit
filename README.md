@@ -18,6 +18,7 @@ https://youtu.be/FTiWS7MOLvk
 
 ## Contact Email
 agupta38@terpmail.umd.edu
+rtiwari3@terpmail.umd.edu
 
 ## Deployed App Link
 https://gymsplit.onrender.com
