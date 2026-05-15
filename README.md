@@ -5,6 +5,7 @@ Rian Tiwari (rtiwari3)
 
 ## Group Members
 Rian Tiwari (rtiwari3)
+Arushi Gupta (agupta38)
 
 ## App Description
 GymSplit Generator creates personalized workout plans based on a user's goals, schedule, experience level, and available equipment. Users can save generated plans and track completed workouts.
@@ -16,7 +17,7 @@ GymSplit Generator creates personalized workout plans based on a user's goals, s
 - [API Ninjas Exercises API](https://api-ninjas.com/api/exercises) — fetches exercises by muscle group and equipment
 
 ## Contact Email
-gptfour21@gmail.com
+agupta38@terpmail.umd.edu
 
 ## Deployed App Link
 [Add Render deployment link here]
