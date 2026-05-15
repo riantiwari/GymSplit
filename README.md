@@ -24,7 +24,7 @@ rtiwari3@terpmail.umd.edu
 https://gymsplit.onrender.com
 
 ## AI Use
-1. ChatGPT (chatgpt.com)
+1. Claude AI (claude.ai)
 
 ---
 
