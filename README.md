@@ -23,7 +23,7 @@ agupta38@terpmail.umd.edu
 https://gymsplit.onrender.com
 
 ## AI Use
-1. Claude (claude.ai)
+1. ChatGPT (chatgpt.com)
 
 ---
 
