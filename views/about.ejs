@@ -1,0 +1,40 @@
+<%- include('partials/header') %>
+
+<div class="container">
+  <div class="about-hero">
+    <h1 style="font-size:2.75rem;font-weight:800;margin-bottom:0.5rem;">About GymSplit Generator</h1>
+    <p style="color:var(--text-secondary);">A CMSC335 Final Exam Project — Spring 2026</p>
+  </div>
+
+  <div class="about-content">
+    <h2>What is GymSplit Generator?</h2>
+    <p>GymSplit Generator is a personalized workout planning web application. Tell it your fitness goals, experience level, available equipment, and weekly schedule — and it instantly generates a structured workout split complete with exercises sourced from a live exercise API.</p>
+
+    <h2>How It Works</h2>
+    <p>After filling out the form, the app determines the best training split for your days (push/pull/legs, upper/lower, full-body, etc.). It then queries the <strong>API Ninjas Exercises API</strong> to fetch relevant exercises based on your equipment and target muscles, with built-in fallback data to ensure the app always delivers a full plan.</p>
+
+    <h2>Tech Stack</h2>
+    <p>
+      <strong>Backend:</strong> Node.js + Express.js with express.Router for modular routing.<br/>
+      <strong>Database:</strong> MongoDB Atlas with Mongoose for schema-based data modeling.<br/>
+      <strong>Views:</strong> EJS templating engine.<br/>
+      <strong>API:</strong> <a href="https://api-ninjas.com/api/exercises" target="_blank">API Ninjas Exercises API</a><br/>
+      <strong>Fonts:</strong> Google Fonts (Poppins)<br/>
+      <strong>Deployment:</strong> Render
+    </p>
+
+    <h2>Features</h2>
+    <p>✅ Workout plan generation with split logic<br/>
+    ✅ Live exercise API with equipment/muscle filtering<br/>
+    ✅ Save plans to MongoDB<br/>
+    ✅ View and delete saved plans<br/>
+    ✅ Log completed workouts<br/>
+    ✅ Progress tracking (totals, weekly stats, avg difficulty)</p>
+
+    <div style="margin-top:2.5rem;text-align:center;">
+      <a href="/generate" class="btn btn-primary btn-lg">Start Building Your Plan →</a>
+    </div>
+  </div>
+</div>
+
+<%- include('partials/footer') %>

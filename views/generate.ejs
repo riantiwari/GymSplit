@@ -1,0 +1,98 @@
+<%- include('partials/header') %>
+
+<div class="form-section">
+  <div class="container">
+    <div class="form-card">
+      <h1 class="form-title">Generate Your Plan</h1>
+      <p class="form-subtitle">Fill in your details and we'll build a personalized workout split for you.</p>
+
+      <form action="/generate" method="POST">
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="goal">Fitness Goal</label>
+            <select id="goal" name="goal" required>
+              <option value="" disabled selected>Select a goal...</option>
+              <option>Build Muscle</option>
+              <option>Lose Fat</option>
+              <option>Improve Strength</option>
+              <option>General Fitness</option>
+              <option>Athletic Performance</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="experienceLevel">Experience Level</label>
+            <select id="experienceLevel" name="experienceLevel" required>
+              <option value="" disabled selected>Select level...</option>
+              <option>Beginner</option>
+              <option>Intermediate</option>
+              <option>Advanced</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="daysPerWeek">Days Per Week</label>
+            <select id="daysPerWeek" name="daysPerWeek" required>
+              <option value="" disabled selected>Select days...</option>
+              <option value="2">2 days</option>
+              <option value="3">3 days</option>
+              <option value="4">4 days</option>
+              <option value="5">5 days</option>
+              <option value="6">6 days</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="timePerWorkout">Time Per Workout</label>
+            <select id="timePerWorkout" name="timePerWorkout" required>
+              <option value="" disabled selected>Select duration...</option>
+              <option>30 minutes</option>
+              <option>45 minutes</option>
+              <option>60 minutes</option>
+              <option>90 minutes</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Available Equipment</label>
+          <div class="checkbox-group">
+            <% ['Bodyweight','Dumbbells','Barbell','Machines','Cables','Kettlebells','Resistance Bands'].forEach(e => { %>
+              <label class="checkbox-label">
+                <input type="checkbox" name="equipment" value="<%= e %>" />
+                <span><%= e %></span>
+              </label>
+            <% }) %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Focus Areas</label>
+          <div class="checkbox-group">
+            <% ['Chest','Back','Legs','Shoulders','Arms','Core','Cardio'].forEach(f => { %>
+              <label class="checkbox-label">
+                <input type="checkbox" name="focusAreas" value="<%= f %>" />
+                <span><%= f %></span>
+              </label>
+            <% }) %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="planName">Plan Name</label>
+          <input type="text" id="planName" name="planName" placeholder='e.g. "Summer Cut Plan" or "Strength Block"' />
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-lg" style="width:100%;justify-content:center;">
+          ⚡ Generate Plan
+        </button>
+
+      </form>
+    </div>
+  </div>
+</div>
+
+<%- include('partials/footer') %>

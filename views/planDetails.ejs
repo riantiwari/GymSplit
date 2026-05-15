@@ -1,0 +1,60 @@
+<%- include('partials/header') %>
+
+<div class="container section">
+
+  <div style="margin-bottom:1.5rem;">
+    <a href="/plans" class="btn btn-secondary btn-sm">← Back to Plans</a>
+  </div>
+
+  <div class="plan-summary">
+    <h2>🏋️ <%= plan.planName %></h2>
+    <div class="summary-tags">
+      <span class="tag"><%= plan.goal %></span>
+      <span class="tag"><%= plan.experienceLevel %></span>
+      <span class="tag"><%= plan.daysPerWeek %> days/week</span>
+      <span class="tag"><%= plan.timePerWorkout %></span>
+      <% plan.equipment.forEach(e => { %><span class="tag tag-neutral"><%= e %></span><% }) %>
+    </div>
+    <p style="margin-top:1rem;font-size:0.8rem;color:var(--text-muted);">
+      Saved on <%= new Date(plan.createdAt).toLocaleDateString('en-US', {year:'numeric',month:'long',day:'numeric'}) %>
+    </p>
+  </div>
+
+  <h2 class="section-title">Workout Split</h2>
+  <p class="section-subtitle">All <%= plan.workoutDays.length %> training days</p>
+
+  <div class="day-grid">
+    <% plan.workoutDays.forEach((day, idx) => { %>
+      <div class="day-card">
+        <div class="day-card-header">
+          <div class="day-number"><%= idx + 1 %></div>
+          <div class="day-card-title"><%= day.dayName %></div>
+        </div>
+        <div class="day-card-body">
+          <% day.exercises.forEach(ex => { %>
+            <div class="exercise-item">
+              <div>
+                <div class="exercise-name"><%= ex.name %></div>
+                <div class="exercise-muscle">🎯 <%= ex.muscle %> &bull; <%= ex.equipment %></div>
+              </div>
+              <div class="exercise-meta">
+                <div class="sets-reps"><%= ex.sets %> sets × <%= ex.reps %></div>
+                <div class="rest-time">Rest: <%= ex.rest %></div>
+              </div>
+            </div>
+          <% }) %>
+        </div>
+      </div>
+    <% }) %>
+  </div>
+
+  <div style="display:flex;gap:1rem;margin-top:2rem;flex-wrap:wrap;">
+    <a href="/history" class="btn btn-primary">📝 Log a Workout</a>
+    <form action="/plans/<%= plan._id %>/delete" method="POST" style="margin:0;">
+      <button type="submit" class="btn btn-danger" onclick="return confirm('Delete this plan?')">Delete Plan</button>
+    </form>
+  </div>
+
+</div>
+
+<%- include('partials/footer') %>

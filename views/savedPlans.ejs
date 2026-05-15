@@ -1,0 +1,41 @@
+<%- include('partials/header') %>
+
+<div class="container section">
+  <div class="page-header">
+    <h1>📋 Saved Plans</h1>
+    <p>Your saved workout plans from MongoDB.</p>
+  </div>
+
+  <% if (plans.length === 0) { %>
+    <div class="empty-state">
+      <span class="icon">🗂️</span>
+      <h3>No saved plans yet</h3>
+      <p>Generate a plan and save it to see it here.</p>
+      <a href="/generate" class="btn btn-primary" style="margin-top:1rem;">Generate a Plan</a>
+    </div>
+  <% } else { %>
+    <div class="plans-grid">
+      <% plans.forEach(plan => { %>
+        <div class="plan-card">
+          <div class="plan-card-title">💪 <%= plan.planName %></div>
+          <div class="plan-card-meta">
+            <div><strong>Goal:</strong> <%= plan.goal %></div>
+            <div><strong>Level:</strong> <%= plan.experienceLevel %></div>
+            <div><strong>Days:</strong> <%= plan.daysPerWeek %>/week</div>
+            <div style="margin-top:0.5rem;color:var(--text-muted);font-size:0.75rem;">
+              Saved <%= new Date(plan.createdAt).toLocaleDateString() %>
+            </div>
+          </div>
+          <div class="plan-card-actions">
+            <a href="/plans/<%= plan._id %>" class="btn btn-secondary btn-sm">View →</a>
+            <form action="/plans/<%= plan._id %>/delete" method="POST" style="margin:0;">
+              <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Delete this plan?')">Delete</button>
+            </form>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  <% } %>
+</div>
+
+<%- include('partials/footer') %>

@@ -1,0 +1,115 @@
+<%- include('partials/header') %>
+
+<div class="container section">
+
+  <div class="page-header">
+    <h1>📈 Workout History</h1>
+    <p>Log completed workouts and track your progress over time.</p>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats-row">
+    <div class="stat-card">
+      <div class="stat-number"><%= total %></div>
+      <div class="stat-label">Total Workouts</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number"><%= avgDifficulty %></div>
+      <div class="stat-label">Avg Difficulty</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number"><%= thisWeek %></div>
+      <div class="stat-label">This Week</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number" style="font-size:1.25rem;">
+        <% if (recent) { %><%= recent.planName.substring(0,12) %><% } else { %>—<% } %>
+      </div>
+      <div class="stat-label">Most Recent</div>
+    </div>
+  </div>
+
+  <!-- Add Log Form -->
+  <div class="log-form-card">
+    <h3>➕ Log a Workout</h3>
+    <form action="/history/add" method="POST">
+      <div class="log-form-row">
+        <div class="form-group">
+          <label for="planName">Plan Name</label>
+          <input type="text" id="planName" name="planName" placeholder="e.g. Summer Cut Plan" required />
+        </div>
+        <div class="form-group">
+          <label for="workoutDay">Workout Day</label>
+          <input type="text" id="workoutDay" name="workoutDay" placeholder="e.g. Day 1: Push" required />
+        </div>
+        <div class="form-group">
+          <label for="dateCompleted">Date</label>
+          <input type="text" id="dateCompleted" name="dateCompleted" placeholder="MM/DD/YYYY" />
+        </div>
+        <div class="form-group">
+          <label for="difficulty">Difficulty (1–5)</label>
+          <select id="difficulty" name="difficulty" required>
+            <option value="" disabled selected>Rate it...</option>
+            <option value="1">1 – Easy</option>
+            <option value="2">2 – Light</option>
+            <option value="3">3 – Moderate</option>
+            <option value="4">4 – Hard</option>
+            <option value="5">5 – Brutal</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="notes">Notes (optional)</label>
+        <textarea id="notes" name="notes" placeholder='e.g. "Leg day was tough but I finished everything."'></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Log Workout</button>
+    </form>
+  </div>
+
+  <!-- History Table -->
+  <h2 class="section-title">Past Workouts</h2>
+  <% if (logs.length === 0) { %>
+    <div class="empty-state">
+      <span class="icon">📭</span>
+      <h3>No workouts logged yet</h3>
+      <p>Use the form above to log your first session.</p>
+    </div>
+  <% } else { %>
+    <div class="card" style="padding:0;overflow:hidden;">
+      <table class="log-table">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Plan</th>
+            <th>Day</th>
+            <th>Difficulty</th>
+            <th>Notes</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% logs.forEach(log => { %>
+            <tr>
+              <td><%= new Date(log.dateCompleted).toLocaleDateString() %></td>
+              <td><%= log.planName %></td>
+              <td><%= log.workoutDay %></td>
+              <td class="difficulty-stars">
+                <% for(let i = 0; i < log.difficulty; i++) { %>★<% } %>
+                <% for(let i = log.difficulty; i < 5; i++) { %><span style="color:var(--border)">★</span><% } %>
+              </td>
+              <td style="color:var(--text-secondary);font-size:0.8rem;max-width:200px;"><%= log.notes || '—' %></td>
+              <td>
+                <form action="/history/<%= log._id %>/delete" method="POST" style="margin:0;">
+                  <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Remove this log?')">✕</button>
+                </form>
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  <% } %>
+
+</div>
+
+<%- include('partials/footer') %>
